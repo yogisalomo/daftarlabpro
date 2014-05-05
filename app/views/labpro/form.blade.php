@@ -47,7 +47,7 @@
 
 <br>
 
-{{Form::model($pendaftar, array('class'=>'form-horizontal', 'url' => '/'))}}
+{{Form::model($pendaftar, array('class'=>'form-horizontal'))}}
 	<div class="row clearfix">
 		<div class="col-sm-12 column">
 			<h2>Bagian I. Data Pribadi</h2>
@@ -61,14 +61,23 @@
 			</div>
 
 
-			<!-- email -->
-			<div class="form-group @if ($errors->has('email')) has-error @endif">
-				{{ Form::label('email', 'Email', array('class' => 'col-sm-2 control-label')) }}
+			<!-- NIM -->
+			<div class="form-group @if ($errors->has('nim')) has-error @endif">
+				{{ Form::label('nim', 'NIM', array('class' => 'col-sm-2 control-label')) }}
 				<div class="col-sm-4">
-					{{ Form::text('email', null, array('class' => 'form-control', 'placeholder' => 'Email aktif')) }}
-					<span class="help-block">{{ $errors->first('email') }}</span>
+					{{ Form::text('nim', null, array('class' => 'form-control')) }}
+					<span class="help-block">{{ $errors->first('nim') }}</span>
 				</div>
 			</div>
+
+                        <!-- email -->
+                        <div class="form-group @if ($errors->has('email')) has-error @endif">
+                                {{ Form::label('email', 'Email', array('class' => 'col-sm-2 control-label')) }}
+                                <div class="col-sm-4">
+                                        {{ Form::text('email', null, array('class' => 'form-control', 'placeholder' => 'Email aktif')) }}
+                                        <span class="help-block">{{ $errors->first('email') }}</span>
+                                </div>
+                        </div>
 
 
 			<!-- kota_lahir -->
@@ -222,7 +231,7 @@
 					<img src="{{asset('assets/images/gambar_' . $i . '.jpg')}}" class="img-rounded">
 				</a>
 				<div class="@if ($errors->has('punya_barang_' . $i)) has-error @endif" style="padding-top: 12px">
-					{{ Form::text('punya_barang_1', null, array('class' => 'form-control')) }}
+					{{ Form::text('punya_barang_' . $i, null, array('class' => 'form-control')) }}
 					<span class="help-block">{{ $errors->first('punya_barang_' . $i) }}</span>
 				</div>
 			</div>

@@ -11,5 +11,6 @@
 |
 */
 
-Route::get('/', 'HomeController@getFormDaftar');
-Route::post('/', 'HomeController@postFormDaftar');
+Route::get('/', function() { return Redirect::to('/daftar'); });
+Route::get('/daftar', 'HomeController@getFormDaftar');
+Route::post('/daftar', 'HomeController@postFormDaftar');
