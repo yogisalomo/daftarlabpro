@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  background: url('images/bg-image.jpg');
+  background-repeat:no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size:cover;/
+  font-family: 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif, 'Myriad Pro';
+  font-size: 14px;
+}
+
