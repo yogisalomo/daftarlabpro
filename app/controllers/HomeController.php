@@ -25,6 +25,7 @@ class HomeController extends BaseController {
 		$pendaftar = new DaftarLabpro();
 		return View::make('labpro.form')->with('pendaftar', $pendaftar);
 	}
+	
 	public function postFormDaftar()
 	{
 		$input = Input::all();
@@ -65,7 +66,9 @@ class HomeController extends BaseController {
 
     	if ($validator->fails())
     	{
-        	return Redirect::to('daftarlabpro')->withErrors($validator);
+        	return Redirect::to('daftarlabpro')
+        		->withErrors($validator)
+        		->withInput();
     	}
     	else{
     		$pendaftar = new DaftarLabpro($input);
