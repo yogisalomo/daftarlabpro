@@ -23,14 +23,15 @@ class HomeController extends BaseController {
 	public function getFormDaftar()
 	{
 		$pendaftar = new DaftarLabpro();
+		//var_dump($pendaftar);
 		return View::make('labpro.form')->with('pendaftar', $pendaftar);
 	}
-	
+
 	public function postFormDaftar()
 	{
 		$input = Input::all();
 		$rules = array(
-        		'email' => 'required|email',
+        	    'email' => 'required|email',
 	            'nama_lengkap' => 'required',
 	            'nim' => 'required|unique:pendaftar_labpro,nim',
 	            'kota_lahir' => 'required',
@@ -72,11 +73,13 @@ class HomeController extends BaseController {
     	}
     	else{
     		$pendaftar = new DaftarLabpro($input);
-			$pendaftar->save();
-			return Redirect::to('berhasildaftar/');
-    	}		
-	}
-	public function getSuccessDaftar(){
-		return View::make('labpro.success');
+    		if ($validator->fails()) {
+			$pendaftar = new DaftarLabpro($input);
+			return View::make('labpro.form')->with('pendaftar', $pendaftar)->withErrors($validator);
+    		} else {
+    			$pendaftar = new DaftarLabpro($input);
+				$pendaftar->save();
+				return View::make('labpro.success');
+    		}
 	}
 }

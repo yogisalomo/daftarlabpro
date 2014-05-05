@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', 'HomeController@getHome');
-
-//Labpro Numpang Buat Form
-Route::get('/daftarlabpro', 'HomeController@getFormDaftar');
-Route::get('berhasildaftar', 'HomeController@getSuccessDaftar');
-Route::post('/daftarlabpro', 'HomeController@postFormDaftar');
-
+Route::get('/', function() { return Redirect::to('/daftar'); });
+Route::get('/daftar', 'HomeController@getFormDaftar');
+Route::post('/daftar', 'HomeController@postFormDaftar');
